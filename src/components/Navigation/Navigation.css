@@ -1,0 +1,68 @@
+.navigation ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.navigation a:hover,
+.navigation a.is-active {
+  color: var(--color-text);
+}
+
+.nav-index {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  transition: color var(--transition-fast);
+}
+
+.nav-line {
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-line);
+  transition: width var(--transition-base), background var(--transition-fast);
+}
+
+.navigation a:hover .nav-line {
+  width: 2.25rem;
+}
+
+.navigation a.is-active .nav-index {
+  color: var(--color-accent);
+}
+
+.navigation a.is-active .nav-line {
+  width: 3rem;
+  background: var(--color-accent);
+}
+
+.navigation--mobile ol {
+  flex-direction: row;
+  gap: 0.25rem;
+}
+
+.navigation--mobile a {
+  padding: 0.65rem 0.7rem;
+  white-space: nowrap;
+}
+
+.navigation--mobile a.is-active {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}

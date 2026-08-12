@@ -1,0 +1,36 @@
+.contact-section {
+  margin-bottom: 0;
+  padding-bottom: 3rem;
+}
+
+.contact-title {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.contact-copy {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.contact-links {
+  margin-top: 2.5rem;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
