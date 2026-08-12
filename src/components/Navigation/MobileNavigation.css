@@ -32,7 +32,7 @@
   display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .mobile-header {
     display: flex;
   }

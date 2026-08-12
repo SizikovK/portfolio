@@ -6,18 +6,18 @@ export function ExperienceItem({ item, index }: { item: ExperienceItemData; inde
     <article className="experience-item" data-reveal data-reveal-delay={String(index)}>
       <header className="experience-header">
         <div>
-          <p className="experience-kind">{item.kind}</p>
+          <p className="experience-kind">{item.eyebrow}</p>
           <h3>{item.title}</h3>
         </div>
-        <p className="experience-role">{item.role}</p>
+        <p className="experience-role">{item.level}</p>
       </header>
-      <p className="experience-description">{item.description}</p>
+      <p className="experience-description">{item.summary}</p>
       <div className="experience-detail">
-        <span>Вклад</span>
-        <p>{item.contribution}</p>
+        <span>{item.detailLabel}</span>
+        <p>{item.detail}</p>
       </div>
-      <ul className="experience-context" aria-label="Контекст проекта">
-        {item.context.map((value) => <li key={value}>{value}</li>)}
+      <ul className="experience-context" aria-label="Технологии и навыки">
+        {item.technologies.map((value) => <li key={value}>{value}</li>)}
       </ul>
     </article>
   )

@@ -1,30 +1,56 @@
 export type ExperienceItem = {
   title: string
-  role: string
-  kind: string
-  description: string
-  contribution: string
-  context: string[]
+  eyebrow: string
+  level: string
+  summary: string
+  detailLabel: string
+  detail: string
+  technologies: string[]
 }
 
 export const experience: ExperienceItem[] = [
   {
-    title: 'GeoRunner',
-    role: 'Backend Developer',
-    kind: 'Командный проект',
-    description: 'Приложение для спортивного ориентирования по картам.',
-    contribution:
-      'Участвую в разработке backend, распределении задач и обсуждении общей архитектуры проекта.',
-    context: ['небольшая команда', 'общая кодовая база', 'task tracker'],
+    title: 'Python backend и данные',
+    eyebrow: 'Основное направление',
+    level: 'Практический опыт',
+    summary:
+      'Разрабатываю API на FastAPI и работаю с реляционными базами данных в командных и собственных задачах.',
+    detailLabel: 'Делал',
+    detail:
+      'Реализовывал эндпоинты, инициализацию базы и таблиц через SQLAlchemy, настраивал миграции схемы базы данных.',
+    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Alembic'],
   },
   {
-    title: 'Mina',
-    role: 'Independent Developer',
-    kind: 'Собственный AI-проект',
-    description:
-      'Telegram AI assistant и площадка для самостоятельных инженерных экспериментов.',
-    contribution:
-      'Исследую работу контекста, RAG, хранение данных, MCP, подключение инструментов и AI agents.',
-    context: ['RAG', 'контекст', 'MCP', 'AI agents'],
+    title: 'AI / LLM-эксперименты',
+    eyebrow: 'Самостоятельная практика',
+    level: 'Развиваюсь',
+    summary:
+      'Собираю Telegram-ботов и проверяю на практике, как устроены RAG, инструменты и состояние AI-агента.',
+    detailLabel: 'Пробовал',
+    detail:
+      'Создавал агента на LangGraph и LangChain, подключал ChromaDB для векторного поиска и SQLite для хранения сообщений.',
+    technologies: ['Aiogram', 'LangChain', 'LangGraph', 'ChromaDB', 'SQLite', 'RAG'],
+  },
+  {
+    title: 'Инженерная среда',
+    eyebrow: 'Ежедневная работа',
+    level: 'Linux-first',
+    summary:
+      'Использую Linux как основную систему для разработки и повседневной работы, Git — для ведения общей кодовой базы.',
+    detailLabel: 'Подход',
+    detail:
+      'Практикую работу с базами данных почти в каждом проекте. Docker использую на базовом уровне и продолжаю осваивать.',
+    technologies: ['Linux', 'Git', 'SQL', 'Docker · базово'],
+  },
+  {
+    title: 'Команда и ответственность',
+    eyebrow: 'Совместная разработка',
+    level: 'Участник и тимлид',
+    summary:
+      'Работаю с друзьями над небольшими продуктами вне учёбы и получаю опыт общей кодовой базы и распределения задач.',
+    detailLabel: 'Опыт',
+    detail:
+      'Часто беру роль тимлида в Школе 21. На чемпионате «Альфа-Будущее» собрал и координировал команду из пяти человек.',
+    technologies: ['планирование', 'task tracker', 'code review', 'коммуникация'],
   },
 ]

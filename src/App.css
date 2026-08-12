@@ -7,7 +7,7 @@
 }
 
 .sidebar-track {
-  padding-top: 56vh;
+  padding-top: 88vh;
 }
 
 .reveal-ready [data-reveal] {
@@ -97,7 +97,7 @@
   text-decoration-color: var(--color-accent);
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .site-shell {
     display: block;
     width: min(calc(100% - 3rem), 720px);
