@@ -1,0 +1,139 @@
+.hero-portrait {
+  --scan-x: 54%;
+  --scan-y: 42%;
+  --scan-coordinate: '54 / 42';
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-portrait::before {
+  position: absolute;
+  inset: 12% 8%;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  filter: blur(3rem);
+  opacity: 0.22;
+  content: "";
+}
+
+.hero-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0);
+  object-fit: contain;
+}
+
+.hero-portrait-accent {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  clip-path: circle(0 at var(--scan-x) var(--scan-y));
+  -webkit-mask: url('/images/hero-ascii.png') center / contain no-repeat;
+  mask: url('/images/hero-ascii.png') center / contain no-repeat;
+  opacity: 0;
+  transition: clip-path 450ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+}
+
+.hero-portrait-reticle {
+  position: absolute;
+  top: var(--scan-y);
+  left: var(--scan-x);
+  width: 5.25rem;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.82);
+  transition: opacity 180ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-portrait-reticle::before,
+.hero-portrait-reticle::after {
+  position: absolute;
+  background: var(--color-accent);
+  content: "";
+}
+
+.hero-portrait-reticle::before {
+  top: 50%;
+  left: -0.45rem;
+  width: calc(100% + 0.9rem);
+  height: 1px;
+}
+
+.hero-portrait-reticle::after {
+  top: -0.45rem;
+  left: 50%;
+  width: 1px;
+  height: calc(100% + 0.9rem);
+}
+
+.hero-portrait-reticle {
+  color: var(--color-accent);
+}
+
+.hero-portrait-reticle::selection {
+  background: transparent;
+}
+
+.hero-portrait-caption {
+  position: absolute;
+  right: 2%;
+  bottom: 5%;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-portrait-caption::after {
+  margin-left: 0.65rem;
+  color: var(--color-accent);
+  content: var(--scan-coordinate);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-portrait:hover .hero-portrait-accent {
+    clip-path: circle(4rem at var(--scan-x) var(--scan-y));
+    opacity: 1;
+  }
+
+  .hero-portrait:hover .hero-portrait-reticle {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .hero-portrait:hover .hero-portrait-caption::after {
+    opacity: 1;
+  }
+}
+
+:root[data-theme='dark'] .hero-portrait img {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 680px) {
+  .hero-portrait-accent {
+    clip-path: circle(3rem at 72% 28%);
+    opacity: 0.75;
+  }
+
+  .hero-portrait-caption,
+  .hero-portrait-reticle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-accent,
+  .hero-portrait-reticle,
+  .hero-portrait-caption::after {
+    transition: none;
+  }
+}

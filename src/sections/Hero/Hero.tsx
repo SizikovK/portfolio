@@ -1,4 +1,5 @@
 import { SocialLinks } from '../../components/SocialLinks/SocialLinks'
+import { HeroPortrait } from '../../components/HeroPortrait/HeroPortrait'
 import './Hero.css'
 
 export function Hero() {
@@ -15,7 +16,7 @@ export function Hero() {
           <SocialLinks className="hero-socials" />
         </div>
         <div className="hero-art" aria-hidden="true">
-          <img src="/images/hero-ascii.png" alt="" width="998" height="1001" />
+          <HeroPortrait />
         </div>
       </div>
     </section>

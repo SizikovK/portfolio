@@ -28,29 +28,6 @@
   transform: translate(-50%, -50%);
 }
 
-.hero-art::after {
-  position: absolute;
-  inset: 12% 8%;
-  z-index: -1;
-  border-radius: 50%;
-  background: var(--color-accent-soft);
-  filter: blur(3rem);
-  opacity: 0.22;
-  content: "";
-}
-
-.hero-art img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: brightness(0);
-  object-fit: contain;
-}
-
-:root[data-theme='dark'] .hero-art img {
-  filter: brightness(0) invert(1);
-}
-
 .hero-kicker {
   margin: 0 0 1.5rem;
   color: var(--color-accent);
