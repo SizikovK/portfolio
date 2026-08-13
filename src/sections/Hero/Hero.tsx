@@ -15,7 +15,7 @@ export function Hero() {
           <SocialLinks className="hero-socials" />
         </div>
         <div className="hero-art" aria-hidden="true">
-          <img src="/images/hero-ascii.png" alt="" width="1448" height="1086" />
+          <img src="/images/hero-ascii.png" alt="" width="998" height="1001" />
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@
   gap: 0.8rem;
   color: var(--color-muted);
   font-size: 0.78rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -28,7 +28,7 @@
 .nav-index {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   transition: color var(--transition-fast);
 }
 
@@ -58,7 +58,8 @@
 }
 
 .navigation--mobile a {
-  padding: 0.65rem 0.7rem;
+  min-height: 2.75rem;
+  padding: 0.8rem 0.75rem;
   white-space: nowrap;
 }
 

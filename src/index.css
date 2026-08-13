@@ -28,15 +28,15 @@
 }
 
 :root[data-theme='dark'] {
-  --color-bg: #111513;
-  --color-surface: #19201d;
-  --color-text: #edf3ef;
-  --color-muted: #9aa8a1;
-  --color-line: #303a35;
-  --color-accent: #b99bf4;
-  --color-accent-soft: #2c2042;
+  --color-bg: #111014;
+  --color-surface: #19171e;
+  --color-text: #f1edf7;
+  --color-muted: #aaa3b2;
+  --color-line: #393440;
+  --color-accent: #c1a2ff;
+  --color-accent-soft: #302346;
   --color-white: #ffffff;
-  --color-header: rgba(17, 21, 19, 0.95);
+  --color-header: rgba(17, 16, 20, 0.95);
 }
 
 * {

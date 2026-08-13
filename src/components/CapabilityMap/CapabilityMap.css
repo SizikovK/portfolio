@@ -1,0 +1,112 @@
+.capability-map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 3.5rem;
+}
+
+.capability-group {
+  padding: 0 2rem 0 0;
+  border: 0;
+  background: transparent;
+}
+
+.capability-group + .capability-group {
+  padding: 0 0 0 2rem;
+  border-left: 1px solid var(--color-line);
+}
+
+.capability-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.capability-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  color: var(--color-accent);
+  background: transparent;
+  font-size: 1.15rem;
+}
+
+.capability-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.capability-header p {
+  margin: 0.35rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.capability-list {
+  display: grid;
+  gap: 1.35rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.capability-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+}
+
+.capability-label span:last-child {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-align: right;
+}
+
+.capability-scale {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+
+.capability-scale span {
+  position: relative;
+  height: 2px;
+  background: var(--color-line);
+}
+
+.capability-scale span.is-filled {
+  background: var(--color-accent);
+}
+
+.capability-scale span.is-filled::after {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 2px;
+  height: 6px;
+  background: var(--color-accent);
+  content: "";
+}
+
+@media (max-width: 680px) {
+  .capability-map {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .capability-group,
+  .capability-group + .capability-group {
+    padding: 0;
+    border-left: 0;
+  }
+}

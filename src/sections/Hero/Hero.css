@@ -22,10 +22,10 @@
 .hero-art {
   position: absolute;
   top: 50%;
-  left: 72%;
-  width: clamp(32rem, 43vw, 42rem);
-  opacity: 0.82;
-  transform: translateY(-50%);
+  left: calc(100% + clamp(6rem, 8vw, 8rem));
+  width: clamp(28rem, 36vw, 34rem);
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
 }
 
 .hero-art::after {
@@ -35,7 +35,7 @@
   border-radius: 50%;
   background: var(--color-accent-soft);
   filter: blur(3rem);
-  opacity: 0.35;
+  opacity: 0.22;
   content: "";
 }
 
@@ -55,9 +55,10 @@
   margin: 0 0 1.5rem;
   color: var(--color-accent);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  animation: hero-enter 420ms 80ms both;
 }
 
 .hero-section h1 {
@@ -66,6 +67,7 @@
   font-size: clamp(3.4rem, 7vw, 5.4rem);
   line-height: 0.96;
   letter-spacing: -0.065em;
+  animation: hero-enter 520ms 140ms both;
 }
 
 .hero-role {
@@ -74,6 +76,7 @@
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 520;
   letter-spacing: -0.025em;
+  animation: hero-enter 480ms 220ms both;
 }
 
 .hero-intro {
@@ -82,21 +85,73 @@
   color: var(--color-muted);
   font-size: 1.1rem;
   line-height: 1.7;
+  animation: hero-enter 480ms 280ms both;
 }
 
 .hero-socials {
   margin-top: 2rem;
+  animation: hero-enter 420ms 360ms both;
 }
 
-@media (max-width: 1199px) {
+.hero-art {
+  animation: hero-art-enter 680ms 160ms both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+}
+
+@keyframes hero-art-enter {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kicker,
+  .hero-section h1,
+  .hero-role,
+  .hero-intro,
+  .hero-socials,
+  .hero-art {
+    animation: none;
+  }
+}
+
+@media (max-width: 1279px) {
   .hero-section {
     min-height: calc(100svh - 4.5rem);
     padding: 4rem 0;
   }
 
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: 2rem;
+  }
+
   .hero-art {
-    left: 72%;
-    width: clamp(25rem, 53vw, 34rem);
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 19rem;
+    margin-left: -1rem;
+    transform: none;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(3.5rem, 6vw, 4.25rem);
+  }
+
+  .hero-intro {
+    max-width: 24rem;
   }
 }
 
@@ -110,16 +165,15 @@
     top: auto;
     left: auto;
     grid-row: 1;
-    width: min(80vw, 23rem);
-    margin: 0 auto -4rem;
-    opacity: 0.38;
+    width: min(72vw, 18rem);
+    margin: 0 auto -1rem;
+    opacity: 0.72;
     transform: none;
   }
 
   .hero-copy {
-    grid-row: 1;
-    align-self: end;
-    padding-top: min(42vw, 13rem);
+    grid-row: 2;
+    padding-top: 0;
   }
 }
 

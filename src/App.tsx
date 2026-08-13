@@ -7,6 +7,7 @@ import { Hero } from './sections/Hero/Hero'
 import { Journey } from './sections/Journey/Journey'
 import { useActiveSection } from './hooks/useActiveSection'
 import { useReveal } from './hooks/useReveal'
+import { useHashNavigation } from './hooks/useHashNavigation'
 import { useTheme } from './hooks/useTheme'
 import { navigation } from './data/navigation'
 import './App.css'
@@ -16,6 +17,7 @@ const sectionIds = navigation.map((item) => item.id)
 function App() {
   const activeSection = useActiveSection(sectionIds)
   const { theme, toggleTheme } = useTheme()
+  useHashNavigation()
   useReveal()
 
   return (
