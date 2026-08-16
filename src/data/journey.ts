@@ -3,6 +3,11 @@ export type JourneyItem = {
   title: string
   description: string
   current?: boolean
+  entries?: Array<{
+    marker: string
+    title: string
+    description: string
+  }>
 }
 
 export const journey: JourneyItem[] = [
@@ -18,22 +23,27 @@ export const journey: JourneyItem[] = [
       'Учусь в Школе 21, участвую в командных задачах и часто беру на себя роль тимлида. Рассматриваю дальнейшее развитие в ML или DevOps.',
   },
   {
-    marker: '13–20 июля',
-    title: 'Альфа-Будущее 2026',
-    description:
-      'Собрал команду из пяти человек и успешно решил бизнес-кейс от Альфа-Банка в роли тимлида.',
-  },
-  {
-    marker: '15 июля — 13 августа',
-    title: 'Yandex AI-Agents Security Week',
-    description:
-      'Прошел программу по безопасности AI-агентов. Получил оффициальный сертификат от Яндекса о прохождении курса.',
+    marker: '2026',
+    title: 'Хакатоны',
+    description: 'Командные интенсивы, бизнес-кейсы и практика работы в ограниченные сроки.',
+    entries: [
+      {
+        marker: '13–20 июля',
+        title: 'Альфа-Будущее 2026',
+        description: 'Собрал команду из пяти человек и успешно решил бизнес-кейс от Альфа-Банка в роли тимлида.',
+      },
+      {
+        marker: '15 июля — 13 августа',
+        title: 'Yandex AI-Agents Security Week',
+        description: 'Прошёл программу по безопасности AI-агентов и получил сертификат от Яндекса.',
+      },
+    ],
   },
   {
     marker: 'Сейчас',
     title: 'Python backend / ML / LLM Engineer',
     description:
-      'Активно ищучаю Python backend, ML и LLM. Работаю над pet-проектами с товарищами, участвую в хакатонах и развиваюсь как специалист.',
+      'Активно изучаю Python backend, ML и LLM. Работаю над pet-проектами с товарищами, участвую в хакатонах и развиваюсь как специалист.',
     current: true,
   },
 ]

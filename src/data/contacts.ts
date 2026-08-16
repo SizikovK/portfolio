@@ -1,12 +1,20 @@
 export const contacts = [
   {
     label: 'GitHub',
-    href: 'https://github.com/username',
-    ariaLabel: 'GitHub Константина — временная ссылка',
+    value: '@SizikovK',
+    href: 'https://github.com/SizikovK',
+    ariaLabel: 'GitHub Константина Сизикова',
   },
   {
     label: 'Telegram',
-    href: 'https://t.me/username',
-    ariaLabel: 'Telegram Константина — временная ссылка',
+    value: '@Miiriada',
+    href: 'https://t.me/Miiriada',
+    ariaLabel: 'Telegram Константина Сизикова',
+  },
+  {
+    label: 'Email',
+    value: 'sizikovkonst42@gmail.com',
+    href: 'mailto:sizikovkonst42@gmail.com',
+    ariaLabel: 'Написать Константину Сизикову по электронной почте',
   },
 ] as const

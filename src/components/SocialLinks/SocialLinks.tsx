@@ -12,8 +12,8 @@ export function SocialLinks({ className = '' }: SocialLinksProps) {
         <li key={contact.label}>
           <a
             href={contact.href}
-            target="_blank"
-            rel="noreferrer"
+            target={contact.href.startsWith('http') ? '_blank' : undefined}
+            rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}
             aria-label={contact.ariaLabel}
           >
             {contact.label}

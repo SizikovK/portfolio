@@ -22,10 +22,33 @@
 .hero-art {
   position: absolute;
   top: 50%;
-  left: calc(100% + clamp(6rem, 8vw, 8rem));
+  left: calc(100% + clamp(9rem, 10vw, 11rem));
   width: clamp(28rem, 36vw, 34rem);
   opacity: 0.8;
   transform: translate(-50%, -50%);
+}
+
+.hero-art::after {
+  position: absolute;
+  inset: 12% 8%;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  filter: blur(3rem);
+  opacity: 0.22;
+  content: "";
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0);
+  object-fit: contain;
+}
+
+:root[data-theme='dark'] .hero-art img {
+  filter: brightness(0) invert(1);
 }
 
 .hero-kicker {
@@ -45,6 +68,48 @@
   line-height: 0.96;
   letter-spacing: -0.065em;
   animation: hero-enter 520ms 140ms both;
+}
+
+.hero-name {
+  position: relative;
+  width: fit-content;
+}
+
+.hero-star {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1;
+  background: var(--color-accent);
+  clip-path: polygon(50% 0, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0 50%, 42% 42%);
+  pointer-events: none;
+}
+
+.hero-star--large {
+  top: 0.15rem;
+  right: -3.25rem;
+  width: 1.35rem;
+  animation: star-twinkle 3.8s 0.4s ease-in-out infinite;
+}
+
+.hero-star--medium {
+  top: 2.3rem;
+  right: -1.55rem;
+  width: 0.72rem;
+  opacity: 0.72;
+  animation: star-twinkle 3.8s 1.25s ease-in-out infinite;
+}
+
+.hero-star--small {
+  right: -2.6rem;
+  bottom: 0.55rem;
+  width: 0.48rem;
+  opacity: 0.52;
+  animation: star-twinkle 3.8s 2s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.45; transform: scale(0.82) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1.08) rotate(8deg); }
 }
 
 .hero-role {
@@ -101,6 +166,7 @@
   .hero-art {
     animation: none;
   }
+
 }
 
 @media (max-width: 1279px) {
@@ -119,7 +185,7 @@
     top: auto;
     left: auto;
     width: 19rem;
-    margin-left: -1rem;
+    margin-left: 1.5rem;
     transform: none;
   }
 
@@ -129,6 +195,18 @@
 
   .hero-intro {
     max-width: 24rem;
+  }
+
+  .hero-star--large {
+    right: -2.15rem;
+  }
+
+  .hero-star--medium {
+    right: -0.9rem;
+  }
+
+  .hero-star--small {
+    right: -1.75rem;
   }
 }
 
@@ -157,5 +235,21 @@
 @media (max-width: 560px) {
   .hero-section h1 {
     font-size: clamp(3rem, 15vw, 4.25rem);
+  }
+
+  .hero-star--large {
+    top: -0.15rem;
+    right: -1.3rem;
+    width: 0.9rem;
+  }
+
+  .hero-star--medium {
+    top: 1.65rem;
+    right: -0.35rem;
+    width: 0.48rem;
+  }
+
+  .hero-star--small {
+    display: none;
   }
 }

@@ -1,0 +1,285 @@
+.contact-dispatch {
+  position: relative;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 1px solid var(--color-line);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.contact-dispatch:focus-within {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-line));
+  box-shadow: 0 1rem 3rem color-mix(in srgb, var(--color-accent-soft) 55%, transparent);
+}
+
+.contact-dispatch-heading {
+  margin-bottom: 2.25rem;
+}
+
+.dispatch-fields label > span {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-dispatch-heading h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  letter-spacing: -0.04em;
+}
+
+.contact-dispatch-heading p {
+  margin: 0.4rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.dispatch-route {
+  display: grid;
+  grid-template-columns: auto minmax(2.5rem, 1fr) auto minmax(2.5rem, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.dispatch-route span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-muted);
+  transition: color 260ms ease;
+}
+
+.dispatch-route span::before {
+  width: 0.42rem;
+  height: 0.42rem;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: var(--color-bg);
+  content: "";
+  transition: border-color 260ms ease, background 260ms ease, box-shadow 260ms ease;
+}
+
+.dispatch-route span:first-child,
+.dispatch-route--success span {
+  color: var(--color-accent);
+}
+
+.dispatch-route span:first-child::before,
+.dispatch-route--success span::before {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.dispatch-route--sending span:nth-of-type(2) {
+  animation: dispatch-route-label 240ms 610ms ease forwards;
+}
+
+.dispatch-route--sending span:nth-of-type(3) {
+  animation: dispatch-route-label 240ms 1.15s ease forwards;
+}
+
+.dispatch-route--sending span:nth-of-type(2)::before {
+  animation: dispatch-route-node 240ms 610ms ease forwards;
+}
+
+.dispatch-route--sending span:nth-of-type(3)::before {
+  animation: dispatch-route-node 240ms 1.15s ease forwards;
+}
+
+.dispatch-route i {
+  position: relative;
+  overflow: hidden;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.dispatch-route i::after {
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.dispatch-route--sending i:first-of-type::after {
+  animation: dispatch-route-fill 540ms 120ms ease forwards;
+}
+
+.dispatch-route--sending i:last-of-type::after {
+  animation: dispatch-route-fill 540ms 680ms ease forwards;
+}
+
+.dispatch-route--success i::after {
+  transform: scaleX(1);
+}
+
+.dispatch-route--error span:not(:first-child) {
+  color: var(--color-muted);
+}
+
+@keyframes dispatch-route-fill {
+  to { transform: scaleX(1); }
+}
+
+@keyframes dispatch-route-label {
+  to { color: var(--color-accent); }
+}
+
+@keyframes dispatch-route-node {
+  to {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-soft);
+  }
+}
+
+.dispatch-fields {
+  display: grid;
+}
+
+.dispatch-fields label {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.4fr) 1fr;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-line);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.dispatch-fields label:focus-within {
+  border-color: var(--color-accent);
+  transform: translateX(0.25rem);
+}
+
+.dispatch-fields label:focus-within > span {
+  color: var(--color-accent);
+}
+
+.dispatch-fields input,
+.dispatch-fields textarea {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  color: var(--color-text);
+  background: transparent;
+  font: inherit;
+  font-size: 0.96rem;
+  resize: vertical;
+}
+
+.dispatch-fields input:focus,
+.dispatch-fields textarea:focus {
+  outline: 0;
+}
+
+.dispatch-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  border: 0;
+  color: var(--color-bg);
+  background: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+.dispatch-button:not(:disabled):hover {
+  color: var(--color-bg);
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.dispatch-button svg {
+  transition: transform var(--transition-fast);
+}
+
+.dispatch-button:not(:disabled):hover svg {
+  transform: translateX(0.3rem);
+}
+
+.dispatch-button:active {
+  transform: translateY(0);
+}
+
+.dispatch-button:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
+.dispatch-spinner {
+  animation: dispatch-spin 800ms linear infinite;
+}
+
+.dispatch-feedback {
+  min-height: 0;
+}
+
+.dispatch-feedback-message {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  animation: dispatch-feedback-enter 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dispatch-feedback-message svg,
+.dispatch-feedback-message strong {
+  color: var(--color-accent);
+}
+
+.dispatch-feedback-message.is-error svg,
+.dispatch-feedback-message.is-error strong {
+  color: #b34c68;
+}
+
+.dispatch-feedback-message strong {
+  display: block;
+  margin-bottom: 0.12rem;
+}
+
+@keyframes dispatch-spin {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes dispatch-feedback-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .contact-dispatch-heading {
+    margin-bottom: 1.75rem;
+  }
+
+  .dispatch-route {
+    grid-template-columns: auto minmax(1rem, 1fr) auto minmax(1rem, 1fr) auto;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .dispatch-fields label {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+}

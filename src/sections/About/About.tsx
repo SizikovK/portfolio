@@ -22,8 +22,12 @@ export function About() {
       </div>
       <div className="principles" aria-label="Подход к работе">
         {principles.map(([title, description]) => (
-          <article className="principle" key={title} data-reveal>
-            <h3>{title}</h3>
+          <article className={title === 'AI-assisted development' ? 'principle principle--ai' : 'principle'} key={title} data-reveal>
+            <h3>
+              {title === 'AI-assisted development' && <span className="ai-star ai-star--left" aria-hidden="true" />}
+              <span>{title}</span>
+              {title === 'AI-assisted development' && <span className="ai-star ai-star--right" aria-hidden="true" />}
+            </h3>
             <p>{description}</p>
           </article>
         ))}

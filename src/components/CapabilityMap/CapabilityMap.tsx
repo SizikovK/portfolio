@@ -1,15 +1,20 @@
-import { LuBot, LuDatabase } from 'react-icons/lu'
+import { LuBot, LuCode, LuDatabase, LuWrench } from 'react-icons/lu'
 import { capabilityGroups } from '../../data/capabilities'
 import './CapabilityMap.css'
 
 const icons = {
-  backend: LuDatabase,
+  backend: LuCode,
+  data: LuDatabase,
   ai: LuBot,
+  tools: LuWrench,
 }
 
 export function CapabilityMap() {
   return (
     <div className="capability-map" aria-label="Карта навыков">
+      <p className="capability-note">
+        Проценты — предварительная самооценка. Позже заменю их результатами профильных тестов.
+      </p>
       {capabilityGroups.map((group, groupIndex) => {
         const Icon = icons[group.id]
 
@@ -27,12 +32,17 @@ export function CapabilityMap() {
                 <li key={item.name}>
                   <div className="capability-label">
                     <span>{item.name}</span>
-                    <span>{item.level}</span>
+                    <span>{item.percent}%</span>
                   </div>
-                  <div className="capability-scale" aria-hidden="true">
-                    {Array.from({ length: 4 }, (_, index) => (
-                      <span className={index < item.strength ? 'is-filled' : ''} key={index} />
-                    ))}
+                  <div
+                    className="capability-scale"
+                    role="progressbar"
+                    aria-label={item.name}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={item.percent}
+                  >
+                    <span style={{ '--capability-value': `${item.percent}%` } as React.CSSProperties} />
                   </div>
                 </li>
               ))}

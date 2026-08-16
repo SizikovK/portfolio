@@ -1,11 +1,10 @@
 export type Capability = {
   name: string
-  level: 'основной инструмент' | 'практика в проектах' | 'экспериментирую' | 'базово'
-  strength: number
+  percent: number
 }
 
 export type CapabilityGroup = {
-  id: 'backend' | 'ai'
+  id: 'backend' | 'data' | 'ai' | 'tools'
   title: string
   description: string
   items: Capability[]
@@ -14,24 +13,45 @@ export type CapabilityGroup = {
 export const capabilityGroups: CapabilityGroup[] = [
   {
     id: 'backend',
-    title: 'Backend и данные',
-    description: 'Инструменты, с которыми решал практические задачи.',
+    title: 'Backend и API',
+    description: 'Python-сервисы и взаимодействие по HTTP.',
     items: [
-      { name: 'Python / FastAPI', level: 'основной инструмент', strength: 4 },
-      { name: 'PostgreSQL / SQLAlchemy', level: 'практика в проектах', strength: 3 },
-      { name: 'Alembic', level: 'практика в проектах', strength: 3 },
-      { name: 'Docker', level: 'базово', strength: 1 },
+      { name: 'Python', percent: 68 },
+      { name: 'FastAPI', percent: 63 },
+      { name: 'REST API / HTTP', percent: 66 },
+    ],
+  },
+  {
+    id: 'data',
+    title: 'Данные и хранение',
+    description: 'Реляционные базы, ORM и управление схемой.',
+    items: [
+      { name: 'PostgreSQL / SQL', percent: 55 },
+      { name: 'SQLAlchemy', percent: 58 },
+      { name: 'Alembic', percent: 48 },
+      { name: 'SQLite', percent: 60 },
     ],
   },
   {
     id: 'ai',
     title: 'AI и инструменты',
-    description: 'Самостоятельная практика и направления развития.',
+    description: 'Агенты, RAG и Telegram-интерфейсы.',
     items: [
-      { name: 'LangGraph / LangChain', level: 'экспериментирую', strength: 2 },
-      { name: 'ChromaDB / RAG', level: 'экспериментирую', strength: 2 },
-      { name: 'Aiogram / SQLite', level: 'практика в проектах', strength: 3 },
-      { name: 'Linux / Git', level: 'основной инструмент', strength: 4 },
+      { name: 'LangGraph', percent: 42 },
+      { name: 'LangChain', percent: 40 },
+      { name: 'ChromaDB / RAG', percent: 45 },
+      { name: 'Aiogram', percent: 58 },
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Среда и процессы',
+    description: 'Инструменты ежедневной разработки и командной работы.',
+    items: [
+      { name: 'Linux', percent: 78 },
+      { name: 'Git', percent: 72 },
+      { name: 'Docker / Compose', percent: 32 },
+      { name: 'Coding agents', percent: 74 },
     ],
   },
 ]

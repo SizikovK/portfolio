@@ -1,0 +1,83 @@
+.hero-commands {
+  --command-step: 1.05s;
+  position: absolute;
+  z-index: 2;
+  top: 67.5%;
+  left: 14%;
+  width: 46%;
+  height: 6.5rem;
+  overflow: hidden;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.05vw, 0.9rem);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hero-commands code {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  padding: 0.36rem 0.5rem;
+  background: color-mix(in srgb, var(--color-bg) 97%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.hero-commands code {
+  opacity: 0;
+  animation: hero-command-cycle calc(var(--command-step) * 8) ease-in-out infinite;
+  animation-delay: calc(0.45s + var(--command-index) * var(--command-step));
+}
+
+@keyframes hero-command-cycle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0.4rem);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translate(-50%, -1.5rem);
+  }
+
+  22% {
+    opacity: 0.72;
+    transform: translate(-50%, -5rem);
+  }
+
+  28%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -6.6rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-commands {
+    top: 67.5%;
+    left: 14%;
+    width: 47%;
+    height: 4.7rem;
+    font-size: 0.58rem;
+  }
+
+  .hero-commands code {
+    padding: 0.26rem 0.3rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-commands code {
+    display: none;
+    animation: none;
+  }
+
+  .hero-commands code:first-of-type {
+    display: block;
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

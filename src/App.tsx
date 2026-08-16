@@ -25,7 +25,7 @@ function App() {
       <a className="skip-link" href="#main-content">
         Перейти к содержанию
       </a>
-      <MobileNavigation activeSection={activeSection} theme={theme} onThemeToggle={toggleTheme} />
+      <MobileNavigation theme={theme} onThemeToggle={toggleTheme} />
       <div className="site-shell">
         <main id="main-content" className="main-content">
           <Hero />
