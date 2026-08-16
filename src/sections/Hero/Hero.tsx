@@ -21,7 +21,12 @@ export function Hero() {
           <SocialLinks className="hero-socials" />
         </div>
         <div className="hero-art" aria-hidden="true">
-          <img src="/images/hero-ascii-clean.png" alt="" width="998" height="1001" />
+          <img
+            src={`${import.meta.env.BASE_URL}images/hero-ascii-clean.png`}
+            alt=""
+            width="998"
+            height="1001"
+          />
           <HeroCommands />
         </div>
       </div>
