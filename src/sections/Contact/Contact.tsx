@@ -18,7 +18,7 @@ export function Contact() {
         <div>
           <p className="contact-title">Давайте знакомиться :)</p>
           <p className="contact-copy">
-            Для связи — email и Telegram. Код и текущие эксперименты собраны на GitHub.
+            Открыт к новым проектам и профессиональным задачам. Связаться со мной можно через форму ниже, или напрямую.
           </p>
         </div>
         <address className="contact-list">

@@ -1,48 +1,59 @@
 # Мой Персональный сайт
 
-Одностраничный сайт-визитка на React, TypeScript и Vite.
+**Сайт:** [sizikovk.github.io/portfolio](https://sizikovk.github.io/portfolio/)
+
+## Стек
+
+- React
+- TypeScript
+- Vite
+- CSS
 
 ## Локальный запуск
 
+Понадобятся Node.js 24 и npm.
+
 ```bash
-npm install
+git clone git@github.com:SizikovK/portfolio.git
+cd portfolio
+npm ci
 npm run dev
 ```
 
-Проверки проекта:
+После запуска сайт будет доступен по адресу, который Vite выведет в терминале —
+обычно `http://localhost:5173`.
+
+## Команды
+
+```bash
+npm run dev      # запустить dev-сервер
+npm run lint     # проверить код ESLint
+npm run build    # собрать production-версию в dist
+npm run preview  # локально открыть production-сборку
+```
+
+Перед отправкой изменений рекомендуется выполнить:
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## API контактной формы
+## Контактная форма
 
-Форма отправляет сообщения в Yandex Cloud Function:
-
-```text
-https://functions.yandexcloud.net/d4ejoodgt0smv96u1g1q
-```
-
-Адрес можно переопределить при сборке через переменную окружения:
+По умолчанию форма отправляет сообщения в Yandex Cloud Function. Другой адрес
+можно указать в `.env.local`:
 
 ```env
 VITE_CONTACT_API_URL=https://functions.yandexcloud.net/function-id
 ```
 
-Клиент отправляет запрос:
+Формат запроса:
 
 ```http
-POST https://functions.yandexcloud.net/d4ejoodgt0smv96u1g1q
+POST /
 Content-Type: application/json
 ```
-
-Перед `POST` браузер отправляет CORS-запрос `OPTIONS`. Опубликованная версия
-функции должна отвечать на него статусом `204` и заголовками
-`Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` и
-`Access-Control-Allow-Headers`.
-
-Тело запроса:
 
 ```json
 {
@@ -52,15 +63,7 @@ Content-Type: application/json
 }
 ```
 
-Ограничения полей:
-
-| Поле | Тип | Ограничения |
-| --- | --- | --- |
-| `name` | string | от 2 до 80 символов |
-| `replyTo` | string | от 3 до 120 символов |
-| `message` | string | от 10 до 2000 символов |
-
-Успешный ответ — HTTP `200`:
+Успешный ответ:
 
 ```json
 {
@@ -68,40 +71,18 @@ Content-Type: application/json
 }
 ```
 
-Ответ означает, что входная функция провалидировала запрос и записала
-сообщение в Yandex Message Queue. Доставка в Telegram выполняется асинхронно
-отдельной функцией через триггер очереди.
+Сообщение записывается в Yandex Message Queue и затем асинхронно доставляется
+в Telegram отдельной Cloud Function.
 
-Ошибка валидации — HTTP `400` или `422`:
+## Деплой
 
-```json
-{
-  "ok": false,
-  "error": "Проверьте заполненные поля",
-  "fieldErrors": {
-    "replyTo": "Укажите Telegram или email"
-  }
-}
+GitHub Actions проверяет и собирает проект после каждого push в `main`, а затем
+публикует содержимое `dist` на GitHub Pages.
+
+```bash
+git add .
+git commit -m "Описание изменений"
+git push origin main
 ```
 
-Ошибка записи в очередь — HTTP `502` или `503`:
-
-```json
-{
-  "ok": false,
-  "error": "Не удалось поставить сообщение в очередь"
-}
-```
-
-Backend:
-
-- принимать только JSON и возвращать `Content-Type: application/json`;
-- проверять длину и тип всех полей повторно на сервере;
-- ограничивать частоту запросов и защищать форму от спама;
-- сериализовать тело сообщения в очередь через `json.dumps`;
-- разрешить CORS только для домена сайта;
-- не возвращать статические ключи Message Queue или внутренние тексты исключений.
-
-Вторая функция получает сообщение через триггер Message Queue и доставляет
-его в Telegram. При ошибке она должна завершаться исключением, чтобы триггер
-вернул сообщение в очередь после тайм-аута видимости.
+Статус публикации можно посмотреть во вкладке **Actions** репозитория.

@@ -1,6 +1,6 @@
-.contact-section {
+.section.contact-section {
   margin-bottom: 0;
-  padding-bottom: 3rem;
+  padding-bottom: 1.5rem;
 }
 
 .contact-info {
@@ -60,7 +60,7 @@
   margin-bottom: 0.2rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
 }
 
@@ -88,10 +88,14 @@
   border-top: 1px solid var(--color-line);
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 680px) {
+  .section.contact-section {
+    padding-bottom: 1rem;
+  }
+
   .contact-info {
     grid-template-columns: 1fr;
   }

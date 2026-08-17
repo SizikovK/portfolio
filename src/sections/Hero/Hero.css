@@ -55,7 +55,7 @@
   margin: 0 0 1.5rem;
   color: var(--color-accent);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   animation: hero-enter 420ms 80ms both;
@@ -233,19 +233,24 @@
 }
 
 @media (max-width: 560px) {
+  .hero-name {
+    max-width: 100%;
+    padding-right: 2rem;
+  }
+
   .hero-section h1 {
-    font-size: clamp(3rem, 15vw, 4.25rem);
+    font-size: clamp(2.75rem, 14vw, 4.25rem);
   }
 
   .hero-star--large {
     top: -0.15rem;
-    right: -1.3rem;
+    right: 0;
     width: 0.9rem;
   }
 
   .hero-star--medium {
     top: 1.65rem;
-    right: -0.35rem;
+    right: 1rem;
     width: 0.48rem;
   }
 

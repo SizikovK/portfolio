@@ -1,7 +1,7 @@
 .contact-dispatch {
   position: relative;
   margin-top: clamp(4rem, 8vw, 7rem);
-  padding: clamp(1.5rem, 4vw, 2.25rem);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
   border: 1px solid var(--color-line);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
@@ -12,13 +12,14 @@
 }
 
 .contact-dispatch-heading {
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.75rem;
+  text-align: center;
 }
 
 .dispatch-fields label > span {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -30,7 +31,8 @@
 }
 
 .contact-dispatch-heading p {
-  margin: 0.4rem 0 0;
+  max-width: 28rem;
+  margin: 0.5rem auto 0;
   color: var(--color-muted);
   font-size: 0.88rem;
 }
@@ -40,9 +42,9 @@
   grid-template-columns: auto minmax(2.5rem, 1fr) auto minmax(2.5rem, 1fr) auto;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
 }
 
 .dispatch-route span {
@@ -149,7 +151,7 @@
   grid-template-columns: minmax(8rem, 0.4fr) 1fr;
   align-items: baseline;
   gap: 1.5rem;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   border-top: 1px solid var(--color-line);
   transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
@@ -180,19 +182,23 @@
   outline: 0;
 }
 
+.dispatch-fields textarea {
+  min-height: 8rem;
+}
+
 .dispatch-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 3rem;
-  margin-top: 1rem;
+  min-height: 3.4rem;
+  margin-top: 1.4rem;
   padding: 0 1rem;
   border: 0;
   color: var(--color-bg);
   background: var(--color-text);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   cursor: pointer;
   transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
 }
@@ -268,18 +274,27 @@
 }
 
 @media (max-width: 680px) {
+  .contact-dispatch {
+    padding: 1.75rem 1.25rem;
+  }
+
   .contact-dispatch-heading {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.25rem;
   }
 
   .dispatch-route {
     grid-template-columns: auto minmax(1rem, 1fr) auto minmax(1rem, 1fr) auto;
     gap: 0.4rem;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
   }
 
   .dispatch-fields label {
     grid-template-columns: 1fr;
     gap: 0.55rem;
+    padding: 1.1rem 0;
+  }
+
+  .dispatch-fields textarea {
+    min-height: 9rem;
   }
 }

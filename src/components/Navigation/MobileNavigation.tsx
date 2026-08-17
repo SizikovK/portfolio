@@ -10,7 +10,7 @@ type MobileNavigationProps = {
 export function MobileNavigation({ theme, onThemeToggle }: MobileNavigationProps) {
   return (
     <header className="mobile-header">
-      <a className="mobile-mark" href="#top" aria-label="К началу страницы">КС</a>
+      <a className="mobile-mark" href="#top" aria-label="К началу страницы">Python Backend Developer</a>
       <ThemeToggle theme={theme} onToggle={onThemeToggle} compact />
     </header>
   )

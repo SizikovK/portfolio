@@ -58,7 +58,7 @@ export function ContactForm() {
         </label>
         <label>
           <span>Сообщение</span>
-          <textarea name="message" rows={3} minLength={contactConstraints.message.minLength} maxLength={contactConstraints.message.maxLength} placeholder="О чём хотите поговорить" required />
+          <textarea name="message" rows={5} minLength={contactConstraints.message.minLength} maxLength={contactConstraints.message.maxLength} placeholder="О чём хотите поговорить" required />
         </label>
       </div>
 

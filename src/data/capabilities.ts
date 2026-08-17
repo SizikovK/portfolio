@@ -1,57 +1,143 @@
-export type Capability = {
+export type SkillLevel = 1 | 2 | 3 | 4
+
+export type CapabilityGroupId =
+  | 'core'
+  | 'data'
+  | 'architecture'
+  | 'tools'
+  | 'ai'
+  | 'team'
+
+export type TechnicalCapability = {
   name: string
-  percent: number
+  level: SkillLevel
 }
 
-export type CapabilityGroup = {
-  id: 'backend' | 'data' | 'ai' | 'tools'
+export type SoftCapability = {
+  name: string
+  evidence: string
+}
+
+type CapabilityGroupBase = {
+  id: CapabilityGroupId
   title: string
   description: string
-  items: Capability[]
+}
+
+export type TechnicalCapabilityGroup = CapabilityGroupBase & {
+  kind: 'technical'
+  items: TechnicalCapability[]
+}
+
+export type SoftCapabilityGroup = CapabilityGroupBase & {
+  kind: 'soft'
+  items: SoftCapability[]
+}
+
+export type CapabilityGroup = TechnicalCapabilityGroup | SoftCapabilityGroup
+
+export const skillLevels: Record<SkillLevel, { label: string; description: string }> = {
+  1: {
+    label: 'Изучаю',
+    description: 'Знаком с основными понятиями и выполняю задачи по документации или готовому примеру.',
+  },
+  2: {
+    label: 'Базовый',
+    description: 'Самостоятельно решаю простые задачи, обращаясь к документации в нестандартных случаях.',
+  },
+  3: {
+    label: 'Практический',
+    description: 'Применял в проектах, самостоятельно решаю типовые задачи и разбираюсь с частыми ошибками.',
+  },
+  4: {
+    label: 'Уверенный',
+    description: 'Самостоятельно проектирую решения, разбираюсь со сложными ошибками и могу объяснить подход.',
+  },
 }
 
 export const capabilityGroups: CapabilityGroup[] = [
   {
-    id: 'backend',
-    title: 'Backend и API',
-    description: 'Python-сервисы и взаимодействие по HTTP.',
+    id: 'core',
+    kind: 'technical',
+    title: 'Основной стек',
+    description: 'Python и инструменты backend-разработки.',
     items: [
-      { name: 'Python', percent: 68 },
-      { name: 'FastAPI', percent: 63 },
-      { name: 'REST API / HTTP', percent: 66 },
+      { name: 'Python', level: 3 },
+      { name: 'FastAPI', level: 3 },
+      { name: 'SQLAlchemy', level: 3 },
+      { name: 'Alembic', level: 2 },
     ],
   },
   {
     id: 'data',
-    title: 'Данные и хранение',
-    description: 'Реляционные базы, ORM и управление схемой.',
+    kind: 'technical',
+    title: 'Данные и базы данных',
+    description: 'Хранение, запросы и модели данных.',
     items: [
-      { name: 'PostgreSQL / SQL', percent: 55 },
-      { name: 'SQLAlchemy', percent: 58 },
-      { name: 'Alembic', percent: 48 },
-      { name: 'SQLite', percent: 60 },
+      { name: 'SQL', level: 2 },
+      { name: 'PostgreSQL', level: 2 },
+      { name: 'SQLite', level: 3 },
+      { name: 'MongoDB', level: 2 },
     ],
   },
   {
-    id: 'ai',
-    title: 'AI и инструменты',
-    description: 'Агенты, RAG и Telegram-интерфейсы.',
+    id: 'architecture',
+    kind: 'technical',
+    title: 'Backend и архитектура',
+    description: 'API, авторизация и устройство сервисов.',
     items: [
-      { name: 'LangGraph', percent: 42 },
-      { name: 'LangChain', percent: 40 },
-      { name: 'ChromaDB / RAG', percent: 45 },
-      { name: 'Aiogram', percent: 58 },
+      { name: 'REST API', level: 3 },
+      { name: 'Клиент-серверная архитектура', level: 3 },
+      { name: 'JWT-аутентификация', level: 2 },
+      { name: 'Проектирование моделей данных', level: 2 },
     ],
   },
   {
     id: 'tools',
-    title: 'Среда и процессы',
-    description: 'Инструменты ежедневной разработки и командной работы.',
+    kind: 'technical',
+    title: 'Инструменты и среда',
+    description: 'Рабочая среда и инфраструктура.',
     items: [
-      { name: 'Linux', percent: 78 },
-      { name: 'Git', percent: 72 },
-      { name: 'Docker / Compose', percent: 32 },
-      { name: 'Coding agents', percent: 74 },
+      { name: 'Git', level: 3 },
+      { name: 'Docker', level: 2 },
+      { name: 'Linux', level: 3 },
+      { name: 'VS Code / PyCharm', level: 3 },
+    ],
+  },
+  {
+    id: 'ai',
+    kind: 'technical',
+    title: 'AI/LLM-интеграции',
+    description: 'Агенты, инструменты и поиск по данным.',
+    items: [
+      { name: 'LangChain', level: 3 },
+      { name: 'LangGraph', level: 2 },
+      { name: 'MCP', level: 3 },
+      { name: 'RAG', level: 2 },
+    ],
+  },
+  {
+    id: 'team',
+    kind: 'soft',
+    title: 'Командная работа',
+    description: 'Взаимодействие и ответственность.',
+    items: [
+      {
+        name: 'Работа в команде',
+        evidence: 'Согласовываю решения, учитываю мнения участников и поддерживаю работу над общим результатом.',
+      },
+      {
+        name: 'Лидерство',
+        evidence: 'Беру ответственность за результат, помогаю определить направление и организовать взаимодействие.',
+      },
+      {
+        name: 'Коммуникация',
+        evidence: 'Ясно формулирую мысли, уточняю детали, аргументирую решения и спокойно принимаю обратную связь.',
+      },
+      {
+        name: 'Адаптивность и обучаемость',
+        evidence: 'Быстро погружаюсь в задачи, осваиваю нужные инструменты и меняю подход вместе с требованиями.',
+      },
     ],
   },
 ]
